@@ -1,6 +1,22 @@
 # encoding: utf-8
+"""
+This is yet another dict subclass which enables attribute (i.e., dot notation)
+access to items. It differs from other implementations as only valid Python
+identifiers and names not matching builtin dict methods or attributes can be
+used. This prevents creating items that are only available through index
+notation and protects the dict from having expected methods accidentally
+demolished.
+
+The goal was to create a dict that could be used as a replacement for Python's
+builtin with as little disruption as possible.
+"""
 
 class AttrDict(dict):
+    """
+    A dict subclass which allows attribute (i.e., dot notation) access to
+    items. Only valid Python identifiers and names not matching builtin dict
+    methods or attributes can be used.
+    """
 
     def __init__(self, *a, **kw):
         dict.__init__(self, *a, **kw)
